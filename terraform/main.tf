@@ -9,6 +9,12 @@ terraform {
 
 provider "aws" {
   region = "eu-west-2"
+
+  # Skip validation calls to real AWS - this project only ever runs
+  # `terraform plan`, never `apply`, so no real AWS account is needed.
+  skip_credentials_validation = true
+  skip_requesting_account_id  = true
+  skip_region_validation      = true
 }
 
 # COMPLIANT: encrypted, versioned, no public access
