@@ -25,6 +25,10 @@ jobs:
 
       - name: Terraform Plan
         working-directory: terraform
+        env:
+          AWS_ACCESS_KEY_ID: mock-access-key
+          AWS_SECRET_ACCESS_KEY: mock-secret-key
+          AWS_DEFAULT_REGION: eu-west-2
         run: terraform plan -out=tfplan.binary
 
       - name: Terraform Show JSON
